@@ -175,6 +175,8 @@ export const products: Product[] = [
 export const getProductsByCategory = (category: string): Product[] => {
     if (category === "new-arrivals") return products.filter(p => p.tags?.includes("New Arrival") || p.tags?.includes("Trending"));
     if (category === "sale") return products.filter(p => p.originalPrice && p.originalPrice > p.price);
+    if (category === "men") return products.filter(p => ["kurta-pajama", "pant-shirts", "turban"].includes(p.category));
+    if (category === "women") return products.filter(p => p.category === "ladies-suits");
     return products.filter((p) => p.category === category);
 };
 
@@ -183,6 +185,8 @@ export const getProductById = (id: string): Product | undefined => {
 };
 
 export const categories = [
+    { slug: "men", name: "Men's Collection", description: "Premium ethnic and western wear for men." },
+    { slug: "women", name: "Women's Collection", description: "Elegant suits and lehengas for women." },
     { slug: "kurta-pajama", name: "Kurta Pajama", description: "Premium, modern men's ethnic wear." },
     { slug: "turban", name: "Turban", description: "High-quality, vibrant turbans for every occasion." },
     { slug: "ladies-suits", name: "Ladies Suits", description: "Elegant salwar kameez with contemporary flair." },

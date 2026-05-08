@@ -19,6 +19,7 @@ const CategoryPage = () => {
     categoryProducts = categoryProducts.filter((p) => {
       const searchTerms = [
         p.name.toLowerCase(),
+        p.category.toLowerCase(),
         ...(p.tags?.map((t) => t.toLowerCase()) || []),
       ];
       return searchTerms.some((term) => term.includes(subcategory.toLowerCase()));
