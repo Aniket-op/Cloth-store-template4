@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Elite Affaires Brand Tokens */
+    --ink: #0E0E0F;
+    --ink-soft: #1A1A1C;
+    --ink-muted: #2B2B2E;
+    --champagne: #C9A96E;
+    --champagne-light: #E2C99A;
+    --champagne-dim: #9A7A4A;
+    --cream: #FAF7F2;
+    --cream-warm: #F3EDE3;
+    --cream-deep: #E8DDD0;
+    --text-primary: #0E0E0F;
+    --text-secondary: #6B6460;
+    --text-muted: #A89F97;
+    --text-inverse: #FAF7F2;
+    --border-light: #E0D8CF;
+    --brand-success: #3D7A5A;
+    --brand-danger: #B03A2E;
+
+    /* Shadcn/ui compatibility */
+    --background: 40 33% 97%;
+    --foreground: 240 4% 6%;
+    --card: 40 33% 97%;
+    --card-foreground: 240 4% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 4% 6%;
+    --primary: 38 47% 61%;
+    --primary-foreground: 240 4% 6%;
+    --secondary: 35 22% 93%;
+    --secondary-foreground: 240 4% 6%;
+    --muted: 35 22% 93%;
+    --muted-foreground: 20 7% 40%;
+    --accent: 35 22% 93%;
+    --accent-foreground: 240 4% 6%;
+    --destructive: 5 60% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 18% 84%;
+    --input: 30 18% 84%;
+    --ring: 38 47% 61%;
+    --radius: 0.125rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-brand-text font-body antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3 {
+    @apply font-display;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer components {
+
+  /* ─── Buttons ─────────────────────────────────────── */
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           bg-champagne text-ink
+           px-10 py-3.5
+           text-[12px] font-body font-semibold uppercase tracking-[0.1em]
+           rounded-sm
+           transition-all duration-300 ease-in-out
+           hover:bg-champagne-light active:scale-[0.98]
+           cursor-pointer select-none;
+  }
+
+  .btn-ghost-gold {
+    @apply inline-flex items-center justify-center
+           border border-champagne text-champagne
+           px-10 py-3.5
+           text-[12px] font-body font-semibold uppercase tracking-[0.1em]
+           rounded-sm bg-transparent
+           transition-all duration-300 ease-in-out
+           hover:bg-champagne/10 active:scale-[0.98]
+           cursor-pointer select-none;
+  }
+
+  .btn-ghost-ink {
+    @apply inline-flex items-center justify-center
+           border border-ink text-ink
+           px-10 py-3.5
+           text-[12px] font-body font-semibold uppercase tracking-[0.1em]
+           rounded-sm bg-transparent
+           transition-all duration-300 ease-in-out
+           hover:bg-ink hover:text-cream active:scale-[0.98]
+           cursor-pointer select-none;
+  }
+
+  .btn-text-gold {
+    @apply inline-flex items-center gap-2
+           text-champagne text-[12px] font-body font-semibold uppercase tracking-[0.1em]
+           relative
+           after:absolute after:bottom-[-2px] after:left-0
+           after:h-px after:w-0 after:bg-champagne
+           after:transition-all after:duration-300
+           hover:after:w-full
+           cursor-pointer;
+  }
+
+  /* ─── Typography ───────────────────────────────────── */
+
+  .display-xl {
+    @apply font-display font-light
+           text-[48px] md:text-[64px] lg:text-[88px]
+           leading-[0.95] tracking-[-0.02em];
+  }
+
+  .display {
+    @apply font-display font-light
+           text-[36px] md:text-[52px] lg:text-[68px]
+           leading-[1.0] tracking-[-0.02em];
+  }
+
+  .heading-1 {
+    @apply font-display font-normal
+           text-[28px] md:text-[36px] lg:text-[44px]
+           leading-[1.1] tracking-[-0.01em];
+  }
+
+  .heading-2 {
+    @apply font-display font-normal
+           text-[22px] md:text-[26px] lg:text-[32px]
+           leading-[1.2];
+  }
+
+  .section-label {
+    @apply font-body font-semibold text-[10px] uppercase tracking-[0.15em] text-champagne;
+  }
+
+  .section-title {
+    @apply font-display font-normal
+           text-[26px] md:text-[34px]
+           leading-[1.2];
+  }
+
+  /* ─── Cards & Images ───────────────────────────────── */
+
+  .product-image-wrap {
+    @apply relative overflow-hidden aspect-[3/4] w-full bg-cream-deep;
+  }
+
+  .product-image-wrap img {
+    @apply w-full h-full object-cover
+           transition-transform duration-500 ease-in-out;
+  }
+
+  .product-image-wrap:hover img {
+    @apply scale-[1.05];
+  }
+
+  /* ─── Gold Divider ─────────────────────────────────── */
+
+  .gold-divider {
+    @apply w-10 h-px bg-champagne my-4;
+  }
+
+  /* ─── Overlays ─────────────────────────────────────── */
+
+  .overlay-dark {
+    @apply absolute inset-0
+           bg-gradient-to-t from-ink/90 via-ink/30 to-transparent;
+  }
+
+  /* ─── Focus ────────────────────────────────────────── */
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--champagne);
+    outline-offset: 2px;
+  }
+
+  /* ─── Shimmer placeholder ──────────────────────────── */
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      #E8DDD0 25%,
+      #F3EDE3 50%,
+      #E8DDD0 75%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  /* ─── Nav underline hover ──────────────────────────── */
+
+  .nav-link {
+    @apply font-body font-medium text-[13px] uppercase tracking-[0.07em]
+           relative
+           after:absolute after:bottom-[-2px] after:left-0
+           after:h-px after:w-0 after:bg-champagne
+           after:transition-all after:duration-300
+           hover:text-champagne hover:after:w-full
+           transition-colors duration-200;
+  }
+}
